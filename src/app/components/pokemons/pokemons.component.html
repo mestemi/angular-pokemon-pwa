@@ -2,12 +2,14 @@
     <div class="row mb-3">
         <h1>First Gen Pokémons</h1>
         <div class="example-button-row d-flex justify-content-end">
-            <button (click)="switchView(false)" mat-mini-fab matTooltip="Accent" color="accent" class="me-3">
-                <mat-icon>view_module</mat-icon>
-              </button>
-            <button (click)="switchView(true)" mat-mini-fab matTooltip="Primary" color="primary">
-              <mat-icon>view_list</mat-icon>
-            </button>
+            <mat-button-toggle-group #group="matButtonToggleGroup" [value]="'grid'">
+                <mat-button-toggle value="grid" (click)="switchView(false)">
+                  <mat-icon>view_module</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle value="list" (click)="switchView(true)">
+                  <mat-icon>view_list</mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
         </div>
     </div>
     <div class="row" *ngIf="!loaded">
@@ -18,7 +20,6 @@
 </div>
 
 <div *ngIf="loaded" class="container animate__animated animate__backInUp animate__fast mb-4">
-
     <div class="row" *ngIf="showList">
         <app-grid [items]="gridDtos"></app-grid>
     </div>

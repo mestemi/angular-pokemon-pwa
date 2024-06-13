@@ -1,33 +1,57 @@
 <div class="container">
     <div class="row">
-        <a class="btn btn-dark" [routerLink]="['/pokemons']">
+        <a class="btn btn-dark ms-auto btn-back" [routerLink]="['/pokemons']">
             View list
         </a>
     </div>
 </div>
 <div class="container" *ngIf="pokemon">
     <div class="row">
-        <div class="image-container image-gif">
-            <img class="image" src="{{ pokemon.gifImage }}" alt="Gif Front Image">
-        </div>
-        <h1>#{{ pokemon.id }} - {{ pokemon.name }}</h1>
+        <h1><span class="id">#{{ pokemon.id }}</span> - {{ pokemon.name }}</h1>
     </div>
-    <div class="row">
+
+    <button class="btn btn-info w-100" (click)="toggleContent()">
+        {{ showMoreContent ? 'Show less' : 'Show all details' }}
+    </button>
+
+    <div class="row" *ngIf="showMoreContent">
+        <div class="mt-4">Resize Pokémon</div>
+        <mat-slider
+            class="example-margin"
+            [disabled]="disabled"
+            [max]="max"
+            [min]="min"
+            [step]="step"
+            [discrete]="thumbLabel"
+            [showTickMarks]="showTicks">
+        <input matSliderThumb [(ngModel)]="widthCustom" #slider>
+        </mat-slider>
+    </div>
+
+    <div class="row" *ngIf="showMoreContent">
+        <div class="image-gif">
+            <img width="{{widthCustom}}" src="{{ pokemon.gifImage }}" alt="Gif Front Image">
+        </div>
+    </div>
+
+    <div class="row" *ngIf="showMoreContent">
         <div class="image-container">
             <img class="image image-normal" src="{{ pokemon.imageFront }}" alt="Front Image">
             <img class="image image-shiny" src="{{ pokemon.shinyImageFront }}" alt="Shiny Front Image">
         </div>
-        
         <div class="image-container">
             <img class="image image-normal" src="{{ pokemon.imageBack }}" alt="Back Image">
             <img class="image image-shiny" src="{{ pokemon.shinyImageBack }}" alt="Shiny Back Image">
         </div>
+
         <div class="alert alert-light" role="alert">
             Hover the pokemon image and check how shiny version looks
         </div>
     </div>
 
-    <div class="row">
+
+
+    <div class="row" *ngIf="showMoreContent">
         <h2>Pokemon data:</h2>
         <ul>
             <li><strong>Height:</strong> {{ pokemon.height }} meters</li>
