@@ -39,7 +39,7 @@
         "https://raw.githubusercontent.com/PokeAPI/**"
       ],
       "cacheConfig": {
-        "maxSize": 20,
+        "maxSize": 30,
         "maxAge": "1h",
         "timeout": "5s",
         "strategy": "freshness"
