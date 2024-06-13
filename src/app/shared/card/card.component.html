@@ -1,14 +1,15 @@
-<a href="{{ item.detailUrl }}">
-<mat-card class="custom-card">
-    <mat-card-header>
-        <mat-card-title>
-            <div class="identifier">#{{ item.id }}</div>
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <h1 class="title">
-            {{ item.name }}
-        </h1>
-    </mat-card-content>
-</mat-card>
+<a [routerLink]="['/pokemon', item.id]">
+    <mat-card class="custom-card">
+        <mat-card-header>
+            <mat-card-title>
+                <div class="identifier">#{{ item.id }}</div>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h1 class="title">
+                {{ item.name }}
+            </h1>
+        </mat-card-content>
+    </mat-card>
 </a>
+
