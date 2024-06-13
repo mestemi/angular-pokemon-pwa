@@ -50,7 +50,7 @@ export class PokemonsComponent implements OnInit {
     return {
       id: pokemon.id,
       name: pokemon.name,
-      detailUrl: `/pokemon/${pokemon.id}` 
+      detailUrl: `/pokemon` 
     };
   }
 
@@ -58,7 +58,7 @@ export class PokemonsComponent implements OnInit {
     return {
       id: pokemon.id,
       name: pokemon.name,
-      detailUrl: `/pokemon/${pokemon.id}` 
+      detailUrl: `/pokemon` 
     };
   }
 }

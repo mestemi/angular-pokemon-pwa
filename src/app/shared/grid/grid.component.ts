@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GridDto } from '../../models/grid.dto';
 import {MatTableModule} from '@angular/material/table';
+import { RouterModule } from '@angular/router';
 
 
 export interface PeriodicElement {
@@ -26,7 +27,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-grid',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, RouterModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss'
 })
