@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <a class="btn btn-dark" [routerLink]="['/pokemons']">
+            View list
+        </a>
+    </div>
+</div>
+<div class="container" *ngIf="pokemon">
+    <div class="row">
+        <div class="image-container image-gif">
+            <img class="image" src="{{ pokemon.gifImage }}" alt="Gif Front Image">
+        </div>
+        <h1>#{{ pokemon.id }} - {{ pokemon.name }}</h1>
+    </div>
+    <div class="row">
+        <div class="image-container">
+            <img class="image image-normal" src="{{ pokemon.imageFront }}" alt="Front Image">
+            <img class="image image-shiny" src="{{ pokemon.shinyImageFront }}" alt="Shiny Front Image">
+        </div>
+        
+        <div class="image-container">
+            <img class="image image-normal" src="{{ pokemon.imageBack }}" alt="Back Image">
+            <img class="image image-shiny" src="{{ pokemon.shinyImageBack }}" alt="Shiny Back Image">
+        </div>
+        <div class="alert alert-light" role="alert">
+            Hover the pokemon image and check how shiny version looks
+        </div>
+    </div>
+
+    <div class="row">
+        <h2>Pokemon data:</h2>
+        <ul>
+            <li><strong>Height:</strong> {{ pokemon.height }} meters</li>
+            <li><strong>Weight:</strong> {{ pokemon.weight }} kg</li>
+        </ul>
+        <h2>Type</h2>
+        <ul>
+            <li *ngFor="let type of pokemon.types">
+                <a target="_blank" class="type" href="{{ type.url }}">{{ type.name }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+

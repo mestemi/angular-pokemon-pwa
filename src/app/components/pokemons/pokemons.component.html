@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row mb-3">
+        <h1>First Gen Pokémons</h1>
+        <div class="example-button-row d-flex justify-content-end">
+            <button (click)="switchView(false)" mat-mini-fab matTooltip="Accent" color="accent" class="me-3">
+                <mat-icon>view_module</mat-icon>
+              </button>
+            <button (click)="switchView(true)" mat-mini-fab matTooltip="Primary" color="primary">
+              <mat-icon>view_list</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row" *ngIf="!loaded">
+        <div class="w-100 d-flex justify-content-center">
+            <mat-spinner></mat-spinner>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loaded" class="container animate__animated animate__backInUp animate__fast mb-4">
+
+    <div class="row" *ngIf="showList">
+        <app-grid [items]="gridDtos"></app-grid>
+    </div>
+
+    <div class="row" *ngIf="!showList">
+        <div
+        *ngFor="let item of cardDtos; let i = index"
+        class="col-xs-6 col-sm-6 col-md-4 col-lg-3 mt-4">
+            <app-card [item]="item"></app-card>
+        </div>
+    </div>
+</div>
